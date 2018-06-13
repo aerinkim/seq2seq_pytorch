@@ -52,7 +52,7 @@ def train(input_tensor, target_tensor, encoder, decoder, encoder_optimizer, deco
 	target_length = target_tensor.size(0)
 
 	encoder_outputs = torch.zeros(max_length, encoder.hidden_size, device=device)
-
+	# 							  not target_length, it's MAX_length!
 	loss = 0
 
 	for ei in range(input_length):
@@ -131,6 +131,8 @@ def trainIters(encoder, decoder, n_iters, print_every=1000, plot_every=100, lear
 			plot_loss_total = 0
 
 	showPlot(plot_losses)
+
+
 
 
 def evaluate(encoder, decoder, sentence, max_length=MAX_LENGTH):

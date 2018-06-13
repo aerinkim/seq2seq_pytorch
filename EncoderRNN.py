@@ -69,8 +69,8 @@ Out[123]: GRU(256, 256)
 
 ==== LSTM Comment ====
 
->>> rnn = nn.LSTMCell(10, 20)
->>> input = torch.randn(6, 3, 10)
+>>> rnn = nn.LSTMCell(10, 20) # input_size, hidden_size i.e. (27, 256)
+>>> input = torch.randn(6, 3, 10) # (seq_len, batch, input_size)
 >>> hx = torch.randn(3, 20) # 3: batch , h :[1, dim], therefore 20 is dim
 >>> cx = torch.randn(3, 20) # 3: batch , c :[1, dim], therefore 20 is dim
 >>> output = []
