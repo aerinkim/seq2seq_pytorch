@@ -69,7 +69,7 @@ def train(input_tensor, target_tensor, encoder, decoder, encoder_optimizer, deco
 		# Teacher forcing: Feed the target as the next input
 		for di in range(target_length):
 			decoder_output, decoder_hidden = decoder(decoder_input, decoder_hidden)
-			loss += criterion(decoder_output, target_tensor[di])
+			loss += criterion(decoder_output, target_tensor[di]) #criterion = nn.NLLLoss()
 			decoder_input = target_tensor[di]  # Teacher forcing
 
 	else:
@@ -79,7 +79,7 @@ def train(input_tensor, target_tensor, encoder, decoder, encoder_optimizer, deco
 			topv, topi = decoder_output.topk(1)
 			decoder_input = topi.squeeze().detach()  # detach from history as input
 
-			loss += criterion(decoder_output, target_tensor[di])
+			loss += criterion(decoder_output, target_tensor[di]) #criterion = nn.NLLLoss()
 			if decoder_input.item() == EOS_token:
 				break
 
